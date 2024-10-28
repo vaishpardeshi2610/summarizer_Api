@@ -1,11 +1,7 @@
 import os
 from groq import Groq
-import logging
 from utils.prompts import COUNTRY_SUMMARY_PROMPT
 
-# Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 # Your API key
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')
@@ -44,7 +40,6 @@ def get_country_data_summary(country_data):
         summary = response.choices[0].message.content.strip()
         return {"country": country_data['country_name'], "summary": summary}
     except Exception as e:
-        logger.error(f"Error generating summary: {str(e)}")
         return None
 
 def generate_summary(prompt):
@@ -66,5 +61,4 @@ def generate_summary(prompt):
         )
         return chat_completion.choices[0].message.content.strip()
     except Exception as e:
-        logger.error(f"Error generating summary: {str(e)}")
         return None

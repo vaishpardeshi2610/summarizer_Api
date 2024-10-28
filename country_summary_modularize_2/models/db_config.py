@@ -1,14 +1,10 @@
 import os
 import psycopg2
-import logging
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 def get_db_connection():
     try:
@@ -21,13 +17,11 @@ def get_db_connection():
         )
         return connection
     except Exception as e:
-        logger.error(f"Error connecting to database: {e}")
         return None
 
 def setup_database():
     conn = get_db_connection()
     if not conn:
-        logger.error("Failed to connect to the database. Cannot set up tables.")
         return
 
     cursor = conn.cursor()  #a cursor object is an interface to execute SQL commands and retrieve data from a database. It allows the program to execute queries, fetch data, and navigate through records one by one or in batches.
@@ -50,10 +44,8 @@ def setup_database():
         """)
         
         conn.commit()
-        logger.info("Database setup completed successfully.")
     except Exception as e:
         conn.rollback()
-        logger.error(f"Error setting up database: {e}")
     finally:
         cursor.close()
         conn.close()

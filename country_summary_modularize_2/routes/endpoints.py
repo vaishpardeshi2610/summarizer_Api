@@ -1,13 +1,10 @@
 from flask import jsonify, request
 from services.services import fetch_economy_data
-from models.query_methods import fetch_country_data, store_country_data, get_economy_data
+from models.db_operations import fetch_country_data, store_country_data, get_economy_data
 from utils.prompts import get_prompt_for_parameter, format_prompt, get_comprehensive_prompt
-import logging
+# import logging
 from services.groq_service import generate_summary, get_country_data_summary
 
-# Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 def setup_routes(app):
     @app.route('/country/<country_name>')
@@ -50,7 +47,7 @@ def setup_routes(app):
             return jsonify({"message": f"Economy data for {country_name} fetched and stored successfully", "data": economy_data})
         else:
             error_message = f"Failed to fetch economy data for {country_name}. Please check server logs for more details."
-            logger.error(error_message)
+            # logger.error(error_message)
             return jsonify({"error": error_message}), 404
 
     @app.route('/economy/<country_name>')
@@ -94,5 +91,5 @@ def setup_routes(app):
             else:
                 return jsonify({"error": "Failed to generate summary"}), 500
         except Exception as e:
-            logger.error(f"Error processing request: {str(e)}")
+            # logger.error(f"Error processing request: {str(e)}")
             return jsonify({"error": f"Error processing request: {str(e)}"}), 500

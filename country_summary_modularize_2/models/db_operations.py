@@ -1,9 +1,4 @@
 from models.db_config import get_db_connection
-import logging
-
-# Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 def fetch_country_data(country_name):
     """Fetches country data from the database."""
@@ -70,11 +65,8 @@ def store_country_data(data):
             float(data.get('gdp_growth', 0)),
             float(data.get('gdp_per_capita', 0))
         ))
-        conn.commit()
-        logger.info(f"Data for {data['country_name']} stored successfully.")
     except Exception as e:
         conn.rollback()
-        logger.error(f"Error storing data for {data['country_name']}: {str(e)}")
     finally:
         cursor.close()
         conn.close()
