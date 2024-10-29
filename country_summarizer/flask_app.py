@@ -22,12 +22,12 @@ groq_client = Groq(api_key=GROQ_API_KEY)
 # Database connection function
 def get_db_connection():
     try:
-        connection = psycopg2.connect(
-            host='localhost',
-            database='Vaish',
-            user='postgres',
-            password='Vaish@312',
-            port=5432
+        connection = psycopg2.connect( 
+            host=os.getenv('DB_HOST'),
+            database=os.getenv('DB_NAME'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=int(os.getenv('DB_PORT', 5432))
         )
         return connection
     except Exception as e:
