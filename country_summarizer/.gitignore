@@ -1,6 +1,6 @@
 # Environment variables
 .env
-__pycache__/  #is a directory that Python 3.x automatically creates to store compiled bytecode files
+__pycache__/  
 venv/
 env/
 .venv/
