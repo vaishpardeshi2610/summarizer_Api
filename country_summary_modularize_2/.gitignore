@@ -1,42 +1,8 @@
 # Environment variables
 .env
-
-# Python
-__pycache__/
-*.py[cod]
-*.so
-
-# Virtual environments
+__pycache__/  #is a directory that Python 3.x automatically creates to store compiled bytecode files
 venv/
 env/
 .venv/
 .env/
-
-# IDEs and editors
 .vscode/
-.idea/
-*.swp
-*.swo
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-
-# Build directories
-build/
-dist/
-*.egg-info/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Coverage reports
-htmlcov/
-.coverage
-.coverage.*

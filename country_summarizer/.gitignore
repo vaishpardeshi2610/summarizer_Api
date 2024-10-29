@@ -1,33 +1,8 @@
-# Ignore .env file containing sensitive information
+# Environment variables
 .env
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual Environment
+__pycache__/  #is a directory that Python 3.x automatically creates to store compiled bytecode files
 venv/
 env/
-ENV/
-
-# IDEs and editors
+.venv/
+.env/
 .vscode/
-.idea/
-*.swp
-*.swo
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Database
-*.sqlite3
-
-# Other
-*.bak
-*.tmp
-
